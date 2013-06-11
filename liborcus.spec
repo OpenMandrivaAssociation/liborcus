@@ -1,6 +1,10 @@
+%define _disable_ld_no_undefined 1
 %define api	0.6
 %define major	0
 %define libname	%mklibname orcus %{api} %{major}
+%define libmso %mklibname orcus-mso %{api} %{major}
+%define libparser %mklibname orcus-parser %{api} %{major}
+%define libspreadsheet %mklibname orcus-spreadsheet-model %{api} %{major}
 %define devname	%mklibname -d orcus
 
 Summary:	Standalone file import filter library for spreadsheet documents
@@ -32,10 +36,34 @@ Group:		Office
 documents. Currently under development are ODS, XLSX and CSV import
 filters.
 
+%package -n %{libmso}
+Summary:	Standalone file import filter library for spreadsheet documents
+Group:		Office
+
+%description -n %{libmso}
+This package contains a shared library library for %{name}.
+
+%package -n %{libparser}
+Summary:	Standalone file import filter library for spreadsheet documents
+Group:		Office
+
+%description -n %{libparser}
+This package contains a shared library library for %{name}.
+
+%package -n %{libspreadsheet}
+Summary:	Standalone file import filter library for spreadsheet documents
+Group:		Office
+
+%description -n %{libspreadsheet}
+This package contains a shared library library for %{name}.
+
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libmso} = %{version}-%{release}
+Requires:	%{libparser} = %{version}-%{release}
+Requires:	%{libspreadsheet} = %{version}-%{release}
 
 %description -n %{devname}
 The %{name}-devel package contains libraries and header files for
@@ -55,11 +83,8 @@ Tools for working with Orcus.
 
 %build
 %configure2_5x \
-	--disable-debug \
-	--disable-static \
-	--disable-werror \
-	--with-pic \
-	--without-libzip
+	--disable-static
+
 %make
 
 %install
@@ -70,10 +95,19 @@ Tools for working with Orcus.
 %{_bindir}/orcus-*
 
 %files -n %{libname}
-%{_libdir}/%{name}*-%{api}.so.%{major}*
+%{_libdir}/%{name}-%{api}.so.%{major}*
+
+%files -n %{libmso}
+%{_libdir}/%{name}-mso-%{api}.so.%{major}*
+
+%files -n %{libparser}
+%{_libdir}/%{name}-parser-%{api}.so.%{major}*
+
+%files -n %{libspreadsheet}
+%{_libdir}/%{name}-spreadsheet-model-%{api}.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/%{name}-%{api}
 %{_libdir}/%{name}*-%{api}.so
-%{_libdir}/pkgconfig/%{name}-%{api}.pc
+%{_libdir}/pkgconfig/%{name}*-%{api}.pc
 
