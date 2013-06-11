@@ -1,0 +1,42 @@
+commit fb81582e3a0366620306efba93741437c049d67c
+Author: Tomas Chvatal <tchvatal@suse.cz>
+Date:   Wed Apr 24 09:15:32 2013 -0400
+
+    liborcus-parser needs to link to boost.
+
+diff --git a/src/parser/Makefile.am b/src/parser/Makefile.am
+index 169d4ca..01bdf57 100644
+--- a/src/parser/Makefile.am
++++ b/src/parser/Makefile.am
+@@ -18,7 +18,8 @@ liborcus_parser_@ORCUS_API_VERSION@_la_SOURCES = \
+ 
+ liborcus_parser_@ORCUS_API_VERSION@_la_LDFLAGS = -no-undefined
+ liborcus_parser_@ORCUS_API_VERSION@_la_LIBADD = \
+-	 $(ZLIB_LIBS)
++						$(BOOST_SYSTEM_LIB) \
++						$(ZLIB_LIBS)
+ 
+ EXTRA_PROGRAMS = \
+ 	parser-test-string-pool \
+diff -up ./src/parser/Makefile.in.tv ./src/parser/Makefile.in
+--- ./src/parser/Makefile.in.tv	2013-05-25 04:00:26.118284662 +0200
++++ ./src/parser/Makefile.in	2013-05-25 04:00:58.026712982 +0200
+@@ -315,6 +315,7 @@ liborcus_parser_@ORCUS_API_VERSION@_la_S
+ 
+ liborcus_parser_@ORCUS_API_VERSION@_la_LDFLAGS = -no-undefined
+ liborcus_parser_@ORCUS_API_VERSION@_la_LIBADD = \
++	$(BOOST_SYSTEM_LIB) \
+ 	 $(ZLIB_LIBS)
+ 
+ 
+diff -up ./src/liborcus/Makefile.in.tv ./src/liborcus/Makefile.in
+--- ./src/liborcus/Makefile.in.tv	2013-05-25 04:17:25.560865023 +0200
++++ ./src/liborcus/Makefile.in	2013-05-25 04:17:50.782784157 +0200
+@@ -551,6 +551,7 @@ liborcus_@ORCUS_API_VERSION@_la_CXXFLAGS
+ 
+ liborcus_@ORCUS_API_VERSION@_la_LDFLAGS = -no-undefined
+ liborcus_@ORCUS_API_VERSION@_la_LIBADD = \
++	../parser/liborcus-parser-@ORCUS_API_VERSION@.la \
+ 	 $(BOOST_SYSTEM_LIBS) $(BOOST_SYSTEM_LIB) $(ZLIB_LIBS)
+ 
+ 

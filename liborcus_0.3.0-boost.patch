@@ -1,0 +1,10 @@
+--- liborcus_0.3.0/include/orcus/dom_tree.hpp~	2012-11-28 20:21:10.000000000 +0800
++++ liborcus_0.3.0/include/orcus/dom_tree.hpp	2012-12-20 11:23:59.268109277 +0800
+@@ -33,6 +33,7 @@
+ 
+ #include <vector>
+ #include <ostream>
++#include <boost/utility.hpp>
+ 
+ #include <boost/ptr_container/ptr_vector.hpp>
+ 
