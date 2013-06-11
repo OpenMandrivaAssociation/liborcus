@@ -7,7 +7,7 @@ Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.5.1
 Release:	1
-Group:		Office/Spreadsheet
+Group:		Office
 License:	MIT
 Url:		http://gitorious.org/orcus
 Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.bz2
@@ -25,7 +25,7 @@ filters.
 
 %package -n %{libname}
 Summary:	Standalone file import filter library for spreadsheet documents
-Group:		Office/Spreadsheet
+Group:		Office
 
 %description -n %{libname}
 %{name} is a standalone file import filter library for spreadsheet
@@ -43,7 +43,7 @@ developing applications that use %{name}.
 
 %package tools
 Summary:	Tools for working with Orcus
-Group:		Office/Spreadsheet
+Group:		Office
 Requires:	%{libname} = %{version}-%{release}
 
 %description tools
