@@ -6,6 +6,7 @@
 %define libparser %mklibname orcus-parser %{api} %{major}
 %define libspreadsheet %mklibname orcus-spreadsheet-model %{api} %{major}
 %define devname	%mklibname -d orcus
+%bcond_with spreadsheet_model
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
@@ -50,12 +51,14 @@ Group:		Office
 %description -n %{libparser}
 This package contains a shared library library for %{name}.
 
+%if %{with spreadsheet_model}
 %package -n %{libspreadsheet}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
 
 %description -n %{libspreadsheet}
 This package contains a shared library library for %{name}.
+%endif
 
 %package -n %{devname}
 Summary:	Development files for %{name}
@@ -79,12 +82,29 @@ Tools for working with Orcus.
 
 %prep
 %setup -q
-%apply_patches
+#$apply_patches
+# fix build of orcus-zip-dump
+sed -i -e 's/orcus_zip_dump_LDADD = /& $(BOOST_SYSTEM_LIB) /' \
+    src/Makefile.in
+# TODO: upstream the changes
+sed -i \
+    -e 's/[a-z_]*_test_LDADD = /& $(BOOST_SYSTEM_LIB) /' \
+    -e 's/parser_test_[a-z_]*_LDADD = /& $(BOOST_SYSTEM_LIB) /' \
+    -e 's/liborcus_test_xml_structure_tree_LDADD = /& $(BOOST_SYSTEM_LIB) /' \
+    src/liborcus/Makefile.in src/parser/Makefile.in
 
 %build
-%configure2_5x \
-	--disable-static
-
+%configure2_5x -disable-debug --disable-silent-rules --disable-static \
+    --disable-werror --with-pic \
+%if %{with spreadsheet_model}
+    --enable-spreadsheet-model
+%else
+    --disable-spreadsheet-model
+%endif
+sed -i \
+    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
+    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
+    libtool
 %make
 
 %install
@@ -103,8 +123,10 @@ Tools for working with Orcus.
 %files -n %{libparser}
 %{_libdir}/%{name}-parser-%{api}.so.%{major}*
 
+%if %{with spreadsheet_model}
 %files -n %{libspreadsheet}
 %{_libdir}/%{name}-spreadsheet-model-%{api}.so.%{major}*
+%endif
 
 %files -n %{devname}
 %{_includedir}/%{name}-%{api}
