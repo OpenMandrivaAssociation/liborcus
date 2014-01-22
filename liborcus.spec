@@ -84,7 +84,6 @@ Tools for working with Orcus.
 
 %prep
 %setup -q
-#$apply_patches
 # fix build of orcus-zip-dump
 sed -i -e 's/orcus_zip_dump_LDADD = /& $(BOOST_SYSTEM_LIB) /' \
     src/Makefile.in
