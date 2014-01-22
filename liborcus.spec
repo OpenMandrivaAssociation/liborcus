@@ -66,7 +66,9 @@ Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libmso} = %{version}-%{release}
 Requires:	%{libparser} = %{version}-%{release}
+%if %{with spreadsheet_model}
 Requires:	%{libspreadsheet} = %{version}-%{release}
+%endif
 
 %description -n %{devname}
 The %{name}-devel package contains libraries and header files for
