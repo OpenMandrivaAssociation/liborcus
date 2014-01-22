@@ -16,8 +16,6 @@ Group:		Office
 License:	MIT
 Url:		http://gitorious.org/orcus
 Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.bz2
-Patch0:		liborcus_0.3.0-boost.patch
-Patch1:		fix-linking.diff
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
 BuildRequires:	pkgconfig(libixion-0.6)
