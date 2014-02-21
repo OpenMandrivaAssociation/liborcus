@@ -1,0 +1,11 @@
+--- liborcus-0.5.1/src/spreadsheet/sheet.cpp.orig	2014-02-21 20:30:13.880577630 +0000
++++ liborcus-0.5.1/src/spreadsheet/sheet.cpp	2014-02-21 20:30:25.452577713 +0000
+@@ -734,7 +734,7 @@
+         con.build_tree();
+ 
+     size_t index;
+-    if (!con.search_tree(col, index))
++    if (!con.search_tree(col, index).second)
+         return 0;
+ 
+     return index;
