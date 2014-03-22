@@ -1,5 +1,5 @@
 %define _disable_ld_no_undefined 1
-%define api	0.6
+%define api	0.8
 %define major	0
 %define libname	%mklibname orcus %{api} %{major}
 %define libmso %mklibname orcus-mso %{api} %{major}
@@ -10,13 +10,12 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.5.1
-Release:	6
+Version:	0.7.0
+Release:	1
 Group:		Office
 License:	MIT
 Url:		http://gitorious.org/orcus
 Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.bz2
-Patch1:		liborcus-0.5.1-fix_build.patch
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
 BuildRequires:	pkgconfig(libixion-0.6)
