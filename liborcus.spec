@@ -20,7 +20,7 @@ Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.bz2
 #Patch2:		liborcus-0.5.1-link-missing-libs.patch
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
-BuildRequires:	pkgconfig(libixion-0.6)
+BuildRequires:	pkgconfig(libixion-0.8)
 BuildRequires:	pkgconfig(zlib)
 
 %description
