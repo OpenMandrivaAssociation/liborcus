@@ -11,7 +11,7 @@
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.7.0
-Release:	1
+Release:	2
 Group:		Office
 License:	MIT
 Url:		http://gitorious.org/orcus
@@ -91,7 +91,7 @@ automake -a
 autoconf
 
 %build
-%configure2_5x -disable-debug --disable-silent-rules --disable-static \
+%configure -disable-debug --disable-silent-rules --disable-static \
     --disable-werror --with-pic \
 %if %{with spreadsheet_model}
     --enable-spreadsheet-model
