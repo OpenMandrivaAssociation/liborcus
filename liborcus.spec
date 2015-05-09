@@ -11,13 +11,11 @@
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.7.0
-Release:	3
+Release:	4
 Group:		Office
 License:	MIT
 Url:		http://gitorious.org/orcus
 Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.bz2
-#Patch1:		liborcus-0.5.1-fix_build.patch
-#Patch2:		liborcus-0.5.1-link-missing-libs.patch
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
 BuildRequires:	pkgconfig(libixion-0.8)
@@ -85,10 +83,6 @@ Tools for working with Orcus.
 %prep
 %setup -q
 %apply_patches
-# Need to rebuild all auto* stuff because we fix Makefile.ams in Patch2
-aclocal
-automake -a
-autoconf
 
 %build
 %configure -disable-debug --disable-silent-rules --disable-static \
