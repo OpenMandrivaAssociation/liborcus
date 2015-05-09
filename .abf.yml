@@ -1,4 +1,5 @@
 removed_sources:
   liborcus-0.5.1.tar.bz2: 9303d513e4b63a1d6e4bce7cfeb13635e568b466
-sources:
   liborcus-0.7.0.tar.bz2: c33e1eb55144fef1070cb0bf35a2c12198fcaa71
+sources:
+  liborcus-0.7.1.tar.xz: 4480f519c6724ee66d76072df32e9b12d55505da
