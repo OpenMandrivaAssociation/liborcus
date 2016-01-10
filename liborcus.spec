@@ -1,5 +1,5 @@
 %define _disable_ld_no_undefined 1
-%define api	0.8
+%define api	0.10
 %define major	0
 %define libname	%mklibname orcus %{api} %{major}
 %define libmso %mklibname orcus-mso %{api} %{major}
@@ -10,11 +10,11 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.7.1
-Release:	4
+Version:	0.9.1
+Release:	1
 Group:		Office
 License:	MIT
-Url:		http://gitorious.org/orcus
+Url:		http://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
