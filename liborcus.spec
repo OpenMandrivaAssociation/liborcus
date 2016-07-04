@@ -1,18 +1,18 @@
 %define _disable_rebuild_configure 1
 %define _disable_ld_no_undefined 1
-%define api	0.11
-%define major	0
-%define libname	%mklibname orcus %{api} %{major}
+%define api 0.11
+%define major 0
+%define libname %mklibname orcus %{api} %{major}
 %define libmso %mklibname orcus-mso %{api} %{major}
 %define libparser %mklibname orcus-parser %{api} %{major}
 %define libspreadsheet %mklibname orcus-spreadsheet-model %{api} %{major}
-%define devname	%mklibname -d orcus
+%define devname %mklibname -d orcus
 %bcond_with spreadsheet_model
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.11.1
-Release:	1
+Release:	2
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
@@ -86,7 +86,7 @@ Tools for working with Orcus.
 %apply_patches
 
 %build
-%configure -disable-debug --disable-silent-rules --disable-static \
+%configure --disable-debug --disable-silent-rules --disable-static \
     --disable-werror --with-pic \
     --disable-python \
 %if %{with spreadsheet_model}
