@@ -11,7 +11,7 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.13.2
+Version:	0.13.4
 Release:	1
 Group:		Office
 License:	MIT
@@ -82,7 +82,7 @@ Requires:	%{libname} = %{version}-%{release}
 Tools for working with Orcus.
 
 %prep
-%setup -qn orcus-%{version}-5aba1df254cf4e052ad013d4b8ac886e274b74fa
+%setup -qn orcus-%{version}-ef2e27538e335583ef3ff85c4bc4f512efc72eb5
 %apply_patches
 ./autogen.sh
 
