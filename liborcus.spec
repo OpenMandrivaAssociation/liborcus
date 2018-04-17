@@ -16,7 +16,7 @@ Release:	1
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
-Source0:	https://gitlab.com/orcus/orcus/repository/%{version}/archive.tar.bz2
+Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	mdds-devel
 BuildRequires:	pkgconfig(libixion-0.13)
@@ -82,9 +82,8 @@ Requires:	%{libname} = %{version}-%{release}
 Tools for working with Orcus.
 
 %prep
-%setup -qn orcus-%{version}-ef2e27538e335583ef3ff85c4bc4f512efc72eb5
+%setup -q
 %apply_patches
-./autogen.sh
 
 %build
 %configure --disable-debug --disable-silent-rules --disable-static \
