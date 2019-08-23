@@ -17,7 +17,7 @@ Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
-BuildRequires:	boost-devel >= 1.70
+BuildRequires:	boost-devel >= 1.71
 BuildRequires:	mdds-devel
 BuildRequires:	pkgconfig(libixion-0.14)
 BuildRequires:	pkgconfig(zlib)
@@ -98,10 +98,10 @@ sed -i \
     -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
     -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
     libtool
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files tools
 %doc AUTHORS
