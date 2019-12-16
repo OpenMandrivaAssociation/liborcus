@@ -12,7 +12,7 @@
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.14.1
-Release:	3
+Release:	4
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
@@ -82,22 +82,24 @@ Requires:	%{libname} = %{version}-%{release}
 Tools for working with Orcus.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
-%configure --disable-debug --disable-silent-rules --disable-static \
-    --disable-werror --with-pic \
-    --disable-python \
+%configure \
+	--disable-debug --disable-silent-rules --disable-static \
+	--disable-werror --with-pic \
+	--disable-python \
 %if %{with spreadsheet_model}
-    --enable-spreadsheet-model
+	--enable-spreadsheet-model
 %else
-    --disable-spreadsheet-model
+	--disable-spreadsheet-model
 %endif
+
 sed -i \
     -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
     -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
     libtool
+
 %make_build
 
 %install
@@ -125,4 +127,3 @@ sed -i \
 %{_includedir}/%{name}-%{api}
 %{_libdir}/%{name}*-%{api}.so
 %{_libdir}/pkgconfig/%{name}*-%{api}.pc
-
