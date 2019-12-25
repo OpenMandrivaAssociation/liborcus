@@ -1,13 +1,18 @@
 %define _disable_rebuild_configure 1
 %define _disable_ld_no_undefined 1
 %define api %(echo %{version} |cut -d. -f1-2)
+%define oldapi 0.14
 %define major 0
 %define libname %mklibname orcus %{api} %{major}
 %define libmso %mklibname orcus-mso %{api} %{major}
 %define libparser %mklibname orcus-parser %{api} %{major}
 %define libspreadsheet %mklibname orcus-spreadsheet-model %{api} %{major}
 %define devname %mklibname -d orcus
-%bcond_with spreadsheet_model
+%define oldlibname %mklibname orcus %{oldapi} %{major}
+%define oldlibmso %mklibname orcus-mso %{oldapi} %{major}
+%define oldlibparser %mklibname orcus-parser %{oldapi} %{major}
+%define oldlibspreadsheet %mklibname orcus-spreadsheet-model %{oldapi} %{major}
+%bcond_without spreadsheet_model
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
@@ -30,6 +35,7 @@ filters.
 %package -n %{libname}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
+Obsoletes:	%{oldlibname} < %{EVRD}
 
 %description -n %{libname}
 %{name} is a standalone file import filter library for spreadsheet
@@ -39,6 +45,7 @@ filters.
 %package -n %{libmso}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
+Obsoletes:	%{oldlibmso} < %{EVRD}
 
 %description -n %{libmso}
 This package contains a shared library library for %{name}.
@@ -46,6 +53,7 @@ This package contains a shared library library for %{name}.
 %package -n %{libparser}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
+Obsoletes:	%{oldlibparser} < %{EVRD}
 
 %description -n %{libparser}
 This package contains a shared library library for %{name}.
@@ -54,6 +62,7 @@ This package contains a shared library library for %{name}.
 %package -n %{libspreadsheet}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
+Obsoletes:	%{oldlibspreadsheet} < %{EVRD}
 
 %description -n %{libspreadsheet}
 This package contains a shared library library for %{name}.
