@@ -16,7 +16,7 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.15.3
+Version:	0.15.4
 Release:	1
 Group:		Office
 License:	MIT
