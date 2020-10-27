@@ -16,15 +16,15 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.15.4
-Release:	3
+Version:	0.16.1
+Release:	1
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
 BuildRequires:	boost-devel >= 1.72
 BuildRequires:	mdds-devel
-BuildRequires:	pkgconfig(libixion-0.15)
+BuildRequires:	pkgconfig(libixion-0.16)
 BuildRequires:	pkgconfig(zlib)
 
 %description
