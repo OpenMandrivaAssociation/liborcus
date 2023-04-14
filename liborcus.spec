@@ -22,6 +22,7 @@ Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
+Patch0:		liborcus-0.17.2-libstdc++13.patch
 BuildRequires:	boost-devel >= 1.72
 BuildRequires:	pkgconfig(mdds-2.0)
 BuildRequires:	pkgconfig(libixion-0.17)

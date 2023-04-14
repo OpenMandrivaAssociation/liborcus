@@ -1,0 +1,22 @@
+diff -up liborcus-0.17.2/include/orcus/base64.hpp.omv~ liborcus-0.17.2/include/orcus/base64.hpp
+--- liborcus-0.17.2/include/orcus/base64.hpp.omv~	2023-04-15 00:00:44.523673203 +0200
++++ liborcus-0.17.2/include/orcus/base64.hpp	2023-04-15 00:01:11.620911834 +0200
+@@ -9,6 +9,7 @@
+ #define __ORCUS_BASE64_HPP__
+ 
+ #include "env.hpp"
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ 
+diff -up liborcus-0.17.2/include/orcus/types.hpp.omv~ liborcus-0.17.2/include/orcus/types.hpp
+--- liborcus-0.17.2/include/orcus/types.hpp.omv~	2023-04-15 00:01:00.692815616 +0200
++++ liborcus-0.17.2/include/orcus/types.hpp	2023-04-15 00:01:07.082871881 +0200
+@@ -9,6 +9,7 @@
+ #define INCLUDED_ORCUS_TYPES_HPP
+ 
+ #include <cstdlib>
++#include <cstdint>
+ #include <vector>
+ #include <string>
+ #include <unordered_set>
