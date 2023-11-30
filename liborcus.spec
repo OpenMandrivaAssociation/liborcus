@@ -1,30 +1,32 @@
 %define _disable_rebuild_configure 1
 %define _disable_ld_no_undefined 1
-%define api %(echo %{version} |cut -d. -f1-2)
+%define api 0.18
+# Usually, but not always:
+# %(echo %{version} |cut -d. -f1-2)
 %define oldapi 0.14
 %define major 0
-%define libname %mklibname orcus %{api} %{major}
-%define libmso %mklibname orcus-mso %{api} %{major}
-%define libparser %mklibname orcus-parser %{api} %{major}
-%define libspreadsheet %mklibname orcus-spreadsheet-model %{api} %{major}
+%define oldlibname %mklibname orcus 0.18 0
+%define oldlibmso %mklibname orcus-mso 0.18 0
+%define oldlibparser %mklibname orcus-parser 0.18 0
+%define oldlibspreadsheet %mklibname orcus-spreadsheet-model 0.18 0
+%define libname %mklibname orcus
+%define libmso %mklibname orcus-mso
+%define libparser %mklibname orcus-parser
+%define libspreadsheet %mklibname orcus-spreadsheet-model
 %define devname %mklibname -d orcus
-%define oldlibname %mklibname orcus %{oldapi} %{major}
-%define oldlibmso %mklibname orcus-mso %{oldapi} %{major}
-%define oldlibparser %mklibname orcus-parser %{oldapi} %{major}
-%define oldlibspreadsheet %mklibname orcus-spreadsheet-model %{oldapi} %{major}
 %bcond_without spreadsheet_model
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.18.1
-Release:	2
+Version:	0.19.1
+Release:	1
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
 BuildRequires:	boost-devel >= 1.72
 BuildRequires:	pkgconfig(mdds-2.1)
-BuildRequires:	pkgconfig(libixion-0.18)
+BuildRequires:	pkgconfig(libixion-0.18) >= 0.19
 BuildRequires:	pkgconfig(zlib)
 
 %description
@@ -35,7 +37,7 @@ filters.
 %package -n %{libname}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
-Obsoletes:	%{oldlibname} < %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 %{name} is a standalone file import filter library for spreadsheet
@@ -45,7 +47,7 @@ filters.
 %package -n %{libmso}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
-Obsoletes:	%{oldlibmso} < %{EVRD}
+%rename %{oldlibmso}
 
 %description -n %{libmso}
 This package contains a shared library library for %{name}.
@@ -53,7 +55,7 @@ This package contains a shared library library for %{name}.
 %package -n %{libparser}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
-Obsoletes:	%{oldlibparser} < %{EVRD}
+%rename %{oldlibparser}
 
 %description -n %{libparser}
 This package contains a shared library library for %{name}.
@@ -62,7 +64,7 @@ This package contains a shared library library for %{name}.
 %package -n %{libspreadsheet}
 Summary:	Standalone file import filter library for spreadsheet documents
 Group:		Office
-Obsoletes:	%{oldlibspreadsheet} < %{EVRD}
+%rename %{oldlibspreadsheet}
 
 %description -n %{libspreadsheet}
 This package contains a shared library library for %{name}.
@@ -71,11 +73,11 @@ This package contains a shared library library for %{name}.
 %package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C
-Requires:	%{libname} = %{version}-%{release}
-Requires:	%{libmso} = %{version}-%{release}
-Requires:	%{libparser} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libmso} = %{EVRD}
+Requires:	%{libparser} = %{EVRD}
 %if %{with spreadsheet_model}
-Requires:	%{libspreadsheet} = %{version}-%{release}
+Requires:	%{libspreadsheet} = %{EVRD}
 %endif
 
 %description -n %{devname}
@@ -85,7 +87,7 @@ developing applications that use %{name}.
 %package tools
 Summary:	Tools for working with Orcus
 Group:		Office
-Requires:	%{libname} = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
 
 %description tools
 Tools for working with Orcus.
