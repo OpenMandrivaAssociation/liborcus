@@ -19,7 +19,7 @@
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
 Version:	0.19.2
-Release:	3
+Release:	4
 Group:		Office
 License:	MIT
 Url:		http://gitlab.com/orcus/orcus
