@@ -22,7 +22,7 @@ Version:	0.19.2
 Release:	5
 Group:		Office
 License:	MIT
-Url:		http://gitlab.com/orcus/orcus
+Url:		https://gitlab.com/orcus/orcus
 Source0:	http://kohei.us/files/orcus/src/liborcus-%{version}.tar.xz
 BuildRequires:	boost-devel >= 1.72
 BuildRequires:	pkgconfig(mdds-2.1)
