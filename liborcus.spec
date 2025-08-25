@@ -25,7 +25,7 @@ License:	MIT
 Url:		https://gitlab.com/orcus/orcus
 Source0:	https://gitlab.com/api/v4/projects/orcus%2Forcus/packages/generic/source/%{version}/liborcus-%{version}.tar.xz
 BuildRequires:	boost-devel >= 1.72
-BuildRequires:	pkgconfig(mdds-2.1)
+BuildRequires:	pkgconfig(mdds-3.0)
 BuildRequires:	pkgconfig(libixion-0.18) >= 0.19
 BuildRequires:	pkgconfig(zlib)
 
