@@ -1,6 +1,6 @@
 %define _disable_rebuild_configure 1
 %define _disable_ld_no_undefined 1
-%define api 0.18
+%define api 0.20
 # Usually, but not always:
 # %(echo %{version} |cut -d. -f1-2)
 %define oldapi 0.14
