@@ -1,8 +1,8 @@
 %define _disable_rebuild_configure 1
 %define _disable_ld_no_undefined 1
-%define api 0.20
 # Usually, but not always:
 # %(echo %{version} |cut -d. -f1-2)
+%define api %(echo %{version} |cut -d. -f1-2)
 %define oldapi 0.14
 %define major 0
 %define oldlibname %mklibname orcus 0.18 0
@@ -18,8 +18,8 @@
 
 Summary:	Standalone file import filter library for spreadsheet documents
 Name:		liborcus
-Version:	0.20.2
-Release:	2
+Version:	0.21.0
+Release:	1
 Group:		Office
 License:	MIT
 Url:		https://gitlab.com/orcus/orcus
